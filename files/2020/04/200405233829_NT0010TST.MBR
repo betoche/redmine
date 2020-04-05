@@ -1,0 +1,21 @@
+  dcl-ds nt0010ds qualified;       
+    msgCod char(4);                
+    customer char(10);             
+    account zoned(12:0) inz;       
+    amount zoned(15:4) inz;        
+    gac char(6);                   
+  end-ds;                          
+                                   
+  dcl-pr nt0010 extpgm;            
+    *N likeds(nt0010ds);           
+  end-pr;                          
+                                   
+  nt0010ds.msgCod = 'A006';        
+  nt0010ds.customer = 'BIDDATAPRO';
+  nt0010ds.account = 500000329;    
+  nt0010ds.amount = 20000;         
+  nt0010ds.gac = 'GAC026';         
+                                   
+  nt0010(nt0010ds);                
+                                   
+  return;                          
